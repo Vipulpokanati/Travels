@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,12 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-lw--g($(4r$f8)+@wxvsiqvjzet743*z7*0a4m!9m&58o$leyy'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-lw--g($(4r$f8)+@wxvsiqvjzet743*z7*0a4m!9m&58o$leyy')
+DEBUG = os.environ.get('DEBUG', '1') == '1'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '*').split(',')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -64,8 +62,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOW_ALL_ORIGINS: True
-CORS_ALLOW_CREDENTIALS: True
+CORS_ALLOW_ALL_ORIGINS= True
+CORS_ALLOW_CREDENTIALS= True
 
 
 ROOT_URLCONF = 'travels.urls'
