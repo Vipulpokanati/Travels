@@ -35,7 +35,7 @@ class busSerializer(serializers.ModelSerializer):
 class BusSummarySerializer(serializers.ModelSerializer):
     class Meta:
         model = Bus
-        fields = ['bus_name', 'bus_number', 'origin', 'destination']
+        fields = ['bus_name', 'bus_number', 'origin', 'destination','start_time','end_time','price']
 
 class BookingSerializer(serializers.ModelSerializer):
     # bus = serializers.StringRelatedField()
@@ -53,4 +53,4 @@ class BookingSerializer(serializers.ModelSerializer):
         model = Booking
         fields = '__all__'
         # read_only_fields = ['user', 'booking_time', 'bus', 'seat']
-        read_only_fields = ['user', 'booking_time', 'bus', 'seat', 'price','origin','destination']
+        read_only_fields = ['user', 'booking_time', 'bus', 'seat', 'price','origin','destination','start_time','end_time']
